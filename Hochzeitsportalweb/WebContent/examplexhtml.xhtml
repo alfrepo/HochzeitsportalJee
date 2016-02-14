@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:a4j="http://richfaces.org/a4j"
+     xmlns:rich="http://richfaces.org/rich">
+
+<head>
+<title> Guess the number, a simple Facelets application</title>
+<style>
+	html { font-family: Candara, Trebuchet MS, Arial, sans-serif; }
+	body { width: 450px; }
+	p    { font-size: 2em; }
+</style>
+</head>
+<body>
+<h:form>
+	<h:graphicImage value="#{resource['images:java_duke.gif']}" />
+	<p>
+	  Hello, my name is Duke. I am thinking of a number from
+	  #{userNumberBean.minimum} to #{userNumberBean.maximum}.
+	  Can you guess what it is?
+	</p>
+
+	<h:inputText id="userNo" value="#{userNumberBean.userNumber}">
+		<f:validateLongRange minimum="#{userNumberBean.minimum}"
+							maximum="#{userNumberBean.maximum}" />
+	</h:inputText>
+
+	<h:commandButton id="submit" value="Submit" action="numberresponse.xhtml" />
+	<h:message showSummary="true"
+				showDetail="false"
+				style="color: red;
+				font-family: Candara, 'Trebuchet MS', Arial, sans-serif;
+				font-style: oblique;
+				text-decoration: overline"
+				id="errors1"
+				for="userNo" />
+</h:form>
+</body>
+</html>
